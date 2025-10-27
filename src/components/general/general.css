@@ -1,0 +1,67 @@
+/* BUTTON */
+.button {
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background-color: #bb000e;
+  cursor: pointer;
+}
+
+.button-disabled,
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button-icon {
+margin-top: 1px;
+}
+
+.input {
+  height: 25px;
+  padding: 0rem 0.5rem;
+  border-bottom: solid 1px #e31c25;
+}
+
+.input:focus {
+  outline: none;
+  border: solid 1px #e31c25;
+}
+
+/* INPUT/SEARCH INPUT */
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 1rem;
+  color: #1c1c1C;
+}
+
+.label-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-icon {
+  font-size: 1rem;
+  color: #999999;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+}
+
+/* SEARCH */
+.search {
+  border: none;
+}

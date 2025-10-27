@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: #222222;
+}
