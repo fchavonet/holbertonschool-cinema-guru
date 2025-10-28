@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./general.css";
 
-function Button({ label, className = "", onClick, icon, type = "button", disabled = false }) {
+function Button({ label, className = "", onClick, icon, type = "button", disabled = false, }) {
   function handleClick(event) {
     if (onClick) {
       onClick(event);
@@ -10,14 +10,19 @@ function Button({ label, className = "", onClick, icon, type = "button", disable
   }
 
   return (
-    <button type={type} className={`button ${disabled ? "button-disabled" : ""} ${className}`} onClick={handleClick} disabled={disabled}>
+    <button
+      className={`button ${disabled ? "button-disabled" : ""} ${className}`}
+      type={type}
+      onClick={handleClick}
+      disabled={disabled}
+    >
       {icon && (
         <span className="button-icon" aria-hidden="true">
           <FontAwesomeIcon icon={icon} />
         </span>
       )}
 
-      <span>{label}</span>
+      {label && <span className="button-label">{label}</span>}
     </button>
   );
 }

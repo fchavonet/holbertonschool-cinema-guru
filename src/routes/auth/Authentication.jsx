@@ -50,20 +50,19 @@ function Authentication({ setIsLoggedIn, setUserUsername }) {
     }
   }
 
-
   return (
     <div className="auth-container">
       <div className="auth-header">
         <Button
+          className={_switch ? "auth-tab-active" : "auth-tab"}
           label="Sign In"
           onClick={handleSignInClick}
-          className={_switch ? "auth-tab-active" : "auth-tab"}
         />
 
         <Button
+          className={!_switch ? "auth-tab-active" : "auth-tab"}
           label="Sign Up"
           onClick={handleSignUpClick}
-          className={!_switch ? "auth-tab-active" : "auth-tab"}
         />
       </div>
 

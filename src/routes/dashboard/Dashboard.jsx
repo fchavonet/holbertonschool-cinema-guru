@@ -1,22 +1,13 @@
-import Button from "../../components/general/Button";
+import SideBar from "../../components/navigation/SideBar";
+import Header from "../../components/navigation/Header";
+
+import "./dashboard.css";
 
 function Dashboard({ userUsername, setIsLoggedIn }) {
-  function handleLogout() {
-    localStorage.removeItem("accessToken");
-    setIsLoggedIn(false);
-  }
-
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        {userUsername}
-
-        <Button
-          label="Logout"
-          className="logout-btn"
-          onClick={handleLogout}
-        />
-      </header>
+      <Header userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
+      <SideBar userUsername={userUsername} />
     </div>
   );
 }

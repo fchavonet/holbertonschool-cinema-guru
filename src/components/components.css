@@ -1,0 +1,10 @@
+/* ACTIVITIES */
+.activity-item {
+    width: 100%;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+}
+
+.activity-username, .activity-title {
+  color: #F31D27;
+}
