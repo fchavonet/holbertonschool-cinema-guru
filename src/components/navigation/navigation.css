@@ -1,5 +1,8 @@
 /* HEADER */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 60px;
     padding: 0rem 4rem;
@@ -8,6 +11,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #161616;
+    z-index: 999;
 }
 
 .header-nav {
@@ -22,6 +26,7 @@ header {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+    border: 3px solid #bb000e;
 }
 
 .logout-container {
@@ -43,13 +48,18 @@ header {
 
 /* SIDEBAR */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 60px;
-    height: calc(100svh - 60px);
+    height: 100%;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     background-color: #bb000e;
     transition: width 0.3s ease;
+    z-index: 99;
 }
 
 .sidebar.expanded {

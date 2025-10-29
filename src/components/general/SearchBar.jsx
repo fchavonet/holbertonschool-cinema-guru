@@ -1,13 +1,14 @@
 import "./general.css";
 
-function SearchBar({ title, setTitle, className = "", placeholder = "Search…" }) {
-  function handleInput(event) {
-    setTitle(event.target.value);
-  }
-
+function SearchBar({ title, setTitle }) {
   return (
-    <div className={`search ${className}`}>
-      <input className="" type="text" value={title} onChange={handleInput} placeholder={placeholder} aria-label="Search by title" />
+    <div className="search">
+      <input
+        type="text"
+        placeholder="Search movie..."
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+      />
     </div>
   );
 }

@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { faFolder, faStar, faClock } from "@fortawesome/free-solid-svg-icons";
-
 import axios from "axios";
 
 import Button from "../../components/general/Button";
@@ -25,22 +24,38 @@ function SideBar({ userUsername }) {
     else if (pageName === "watchlater") navigate("/watchlater");
   }
 
-  useEffect(() => {
+  const fetchActivities = useCallback(async () => {
     const token = localStorage.getItem("accessToken");
     if (!token) return;
 
-    axios
-      .get("http://localhost:8000/api/activity", {
+    try {
+      const res = await axios.get("http://localhost:8000/api/activity", {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        const filtered = res.data.filter(
-          (a) => a.user?.username === userUsername
-        );
-        setActivities(filtered);
-      })
-      .catch((error) => console.error(error));
+      });
+
+      const filtered = res.data.filter(
+        (a) => a.user?.username === userUsername
+      );
+
+      setActivities(filtered);
+    } catch (error) {
+      console.error(error.message);
+    }
   }, [userUsername]);
+
+  useEffect(() => {
+    fetchActivities();
+  }, [fetchActivities]);
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setTimeout(fetchActivities, 500);
+    };
+
+    window.addEventListener("activitiesUpdated", handleUpdate);
+
+    return () => window.removeEventListener("activitiesUpdated", handleUpdate);
+  }, [fetchActivities]);
 
   useEffect(() => {
     let timer;
@@ -55,7 +70,11 @@ function SideBar({ userUsername }) {
   }, [expanded]);
 
   return (
-    <nav className={`sidebar ${expanded ? "expanded" : ""}`} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
+    <nav
+      className={`sidebar ${expanded ? "expanded" : ""}`}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+    >
       <ul className="sidebar-nav">
         <li>
           <Button
@@ -74,7 +93,7 @@ function SideBar({ userUsername }) {
             onClick={() => setPage("favorites")}
           />
         </li>
-        
+
         <li>
           <Button
             className={`sidebar-btn ${selected === "watchlater" ? "active" : ""}`}
@@ -87,10 +106,7 @@ function SideBar({ userUsername }) {
 
       {showActivities && activities.length > 0 && (
         <ul className="sidebar-activities fade-in">
-          <li className="activities-title">
-            Latest Activities
-          </li>
-
+          <li className="activities-title">Latest Activities</li>
           {activities.slice(0, 10).map((a) => (
             <Activity key={a.id} activity={a} />
           ))}

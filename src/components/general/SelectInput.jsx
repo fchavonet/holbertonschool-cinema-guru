@@ -7,7 +7,7 @@ function SelectInput({ label, options = [], className = "", value, setValue }) {
 
   return (
     <div className={`field ${className}`}>
-      {label && <label className="label">{label}</label>}
+      {label && <label className="select-label">{label}</label>}
 
       <div className="select-wrap">
         <select className="select" value={value} onChange={handleSelect}>

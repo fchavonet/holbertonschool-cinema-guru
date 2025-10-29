@@ -1,0 +1,226 @@
+/* FILTERS */
+.filters-container {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 400px;
+  gap: 1rem;
+}
+
+.filter-inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.filter-input label {
+  color: #ffffff;
+}
+
+.filter-input input {
+  width: 200px;
+  padding: 0.3rem;
+  border: none;
+  border-bottom: solid 1px #e31c25;
+  background-color: #2c2c2c;
+}
+
+.filter-input input:focus {
+  outline: none;
+  border: none;
+  border-bottom: solid 1px #e31c25;
+}
+
+.select-input select {
+  width: 200px;
+  border: none;
+  border-bottom: solid 1px #e31c25;
+  background-color: #2c2c2c;
+}
+
+/* TAGS */
+.tags-container {
+  flex: 1 1 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.tag {
+  padding: 0.25rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  border-radius: 2rem;
+  border: 1px solid #bb000e;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.tag.selected {
+  background-color: #bb000e;
+}
+
+/* MOVIES */
+.movie-card {
+  max-width: 300px;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  background-color: #2c2c2c;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card:hover {
+  box-shadow: 12px 10px 13px 0px #FFFFFF0D;
+  transform: translateY(-0.25rem);
+}
+
+.movie-header {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.movie-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.movie-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: rgba(44, 44, 44, 0.5);
+}
+
+.movie-title-text {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movie-icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  color: rgba(44, 44, 44, 0.5);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.movie-icon.active {
+  color: #e31c25;
+}
+
+.movie-content {
+  padding: 0.75rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-synopsis {
+  width: 100%;
+  color: #dddddd;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  line-clamp: unset;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-genres {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.movie-genre-tag {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  border-radius: 2rem;
+  border: 1px solid #bb000e;
+  background-color: #bb000e;
+  color: white;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Big screen (≥ 1400px) : 5 cols */
+@media screen and (min-width: 1400px) {
+  .movies-list {
+    grid-template-columns: repeat(5, 1fr);
+    padding: 0 6rem;
+  }
+}
+
+/* Middle screen (900–1399px) : 3 cols */
+@media screen and (max-width: 1399px) and (min-width: 900px) {
+  .movies-list {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 3rem;
+  }
+}
+
+/* Small screen (600–899px) : 2 cols */
+@media screen and (max-width: 899px) and (min-width: 600px) {
+  .filter-inputs-container {
+    flex-direction: column;
+  }
+
+  .movies-list {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+  }
+}
+
+/* Very small screen (< 600px) : 1 col */
+@media screen and (max-width: 599px) {
+  .filter-inputs-container {
+    flex-direction: column;
+  }
+
+  .movies-list {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .movie-card {
+    max-width: 100%;
+    height: auto;
+  }
+}
