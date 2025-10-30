@@ -797,6 +797,13 @@ yarn run dev
 
 5. Log out securely using the Header.
 
+![Screenshot](./public/screenshots/screenshot-001.webp)
+![Screenshot](./public/screenshots/screenshot-002.webp)
+![Screenshot](./public/screenshots/screenshot-003.webp)
+![Screenshot](./public/screenshots/screenshot-004.webp)
+![Screenshot](./public/screenshots/screenshot-005.webp)
+![Screenshot](./public/screenshots/screenshot-006.webp)
+
 ## Thanks
 
 - A big thank you to all my Holberton School peers for their help and support throughout this project.
